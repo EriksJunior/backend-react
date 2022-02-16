@@ -17,6 +17,7 @@ export default class Clientes extends BaseSchema {
       table.string('funcao', 50)
       table.string('nivel', 100)
 
+        //teste commit
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
