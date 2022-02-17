@@ -17,7 +17,6 @@ export default class ClientesController {
       'nivel',
     ])
     const dataCliente = await Cliente.create(data)
-
     return dataCliente
   }
 
