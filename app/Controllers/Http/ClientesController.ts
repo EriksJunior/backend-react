@@ -1,8 +1,9 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Cliente from '../../Models/Cliente'
 export default class ClientesController {
-  public async index({}: HttpContextContract) {
-    const data = await Cliente.all()
+  public async index({ params }: HttpContextContract) {
+    const page = params.page
+    const data = await Cliente.query().paginate(page, 10)
     console.log(data)
     return data
   }
