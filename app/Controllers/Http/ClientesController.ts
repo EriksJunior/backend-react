@@ -25,6 +25,12 @@ export default class ClientesController {
     return dataCliente
   }
 
+  public async fetchCustomerToEdit({ params }: HttpContextContract) {
+    const data = await Cliente.findOrFail(params)
+    console.log(data)
+    return data
+  }
+
   public async show({}: HttpContextContract) {}
 
   public async edit({}: HttpContextContract) {}
