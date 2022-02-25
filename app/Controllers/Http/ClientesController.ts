@@ -52,6 +52,6 @@ export default class ClientesController {
 
   public async destroy({ params }: HttpContextContract) {
     const data = await Cliente.findOrFail(params.id)
-    await data.delete()
+    data.delete()
   }
 }
