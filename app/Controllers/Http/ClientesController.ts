@@ -10,7 +10,6 @@ export default class ClientesController {
 
   public async store({ request }: HttpContextContract) {
     const data = await request.only([
-      'id',
       'nome',
       'cpf',
       'endereco',
