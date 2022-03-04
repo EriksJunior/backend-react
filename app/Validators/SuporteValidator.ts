@@ -1,13 +1,13 @@
 import { schema, rules } from '@ioc:Adonis/Core/Validator'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
-class ClienteValidatorStore {
+class SuporteValidatorStore {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
     nome: schema.string({ trim: true }, [rules.maxLength(100)]),
     cpf: schema.string({ trim: true }, [
-      rules.unique({ table: 'clientes', column: 'cpf' }),
+      rules.unique({ table: 'suportes', column: 'cpf' }),
       rules.maxLength(14),
     ]),
     endereco: schema.string.optional({ trim: true }, [rules.maxLength(100)]),
@@ -23,7 +23,7 @@ class ClienteValidatorStore {
   public messages = {}
 }
 
-class ClienteValidatorUpdate {
+class SuporteValidatorUpdate {
   constructor(protected ctx: HttpContextContract) {}
 
   public schema = schema.create({
@@ -42,4 +42,4 @@ class ClienteValidatorUpdate {
   public messages = {}
 }
 
-export { ClienteValidatorStore, ClienteValidatorUpdate }
+export { SuporteValidatorStore, SuporteValidatorUpdate }

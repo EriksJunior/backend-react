@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
-export default class Clientes extends BaseSchema {
-  protected tableName = 'clientes'
+export default class Suportes extends BaseSchema {
+  protected tableName = 'suportes'
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {

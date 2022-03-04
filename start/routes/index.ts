@@ -1,1 +1,1 @@
-import '../routes/cliente'
+import './suporte'
