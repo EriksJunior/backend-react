@@ -1,6 +1,7 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Suporte from '../../Models/Suporte'
 import { SuporteValidatorStore, SuporteValidatorUpdate } from 'App/Validators/SuporteValidator'
+import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class SuportesController {
   public async index({ params }: HttpContextContract) {
@@ -31,5 +32,15 @@ export default class SuportesController {
   public async destroy({ params }: HttpContextContract) {
     const data = await Suporte.findOrFail(params.id)
     data.delete()
+  }
+
+  public async fetchCustomerToTechnicalData({}: HttpContextContract) {
+    const data = await Database.knexQuery()
+      .select(['nivel', 'id'])
+      .table('suportes')
+      .count('nivel as total')
+      .groupBy('nivel')
+
+    return data
   }
 }
