@@ -5,7 +5,7 @@ export default class Suportes extends BaseSchema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.string('id', 36).primary()
       table.string('nome', 100)
       table.string('cpf', 40)
       table.string('endereco', 100)
@@ -17,7 +17,7 @@ export default class Suportes extends BaseSchema {
       table.string('funcao', 50)
       table.string('nivel', 100)
 
-        //teste commit
+      //teste commit
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

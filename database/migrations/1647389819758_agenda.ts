@@ -5,17 +5,15 @@ export default class Agenda extends BaseSchema {
 
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id').primary().unique()
+      table.string('id', 36).primary()
       table
-        .integer('id_suporte')
-        .unsigned()
+        .string('id_suporte')
         .references('id')
         .inTable('suportes')
         .onUpdate('CASCADE')
         .notNullable()
       table
-        .integer('id_cliente')
-        .unsigned()
+        .string('id_cliente')
         .references('id')
         .inTable('clientes')
         .onUpdate('CASCADE')
