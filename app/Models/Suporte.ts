@@ -1,9 +1,10 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, beforeCreate } from '@ioc:Adonis/Lucid/Orm'
+import { randomUUID } from 'crypto'
 
 export default class Suporte extends BaseModel {
   @column({ isPrimary: true })
-  public id: number
+  public id: string
 
   @column()
   public nome: string
@@ -40,4 +41,11 @@ export default class Suporte extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  public static selfAssignPrimaryKey = true
+
+  @beforeCreate()
+  public static async generateUUID(suporte: Suporte) {
+    suporte.id = randomUUID()
+  }
 }

@@ -1,8 +1,10 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo, BelongsTo, beforeCreate } from '@ioc:Adonis/Lucid/Orm'
+
+import { randomUUID } from 'crypto'
+
 import Suporte from './Suporte'
 import Cliente from './Cliente'
-import { randomUUID } from 'crypto'
 
 export default class Agenda extends BaseModel {
   @column({ isPrimary: true })
@@ -35,16 +37,16 @@ export default class Agenda extends BaseModel {
   @column()
   public tipoAtendimento: string
 
+  @column.dateTime({ autoCreate: true })
+  public createdAt: DateTime
+
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  public updatedAt: DateTime
+
   public static selfAssignPrimaryKey = true
 
   @beforeCreate()
   public static async generateUUID(agenda: Agenda) {
     agenda.id = randomUUID()
   }
-
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
 }
