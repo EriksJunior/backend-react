@@ -10,6 +10,9 @@ export default class Cliente extends BaseModel {
   public nome: string
 
   @column()
+  public razaoSocial: string
+
+  @column()
   public endereco: string
 
   @column()
