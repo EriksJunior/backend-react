@@ -27,6 +27,8 @@ export default class Agenda extends BaseSchema {
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })
+
+    
   }
 
   public async down() {
