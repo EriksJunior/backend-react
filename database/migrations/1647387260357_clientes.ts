@@ -7,7 +7,7 @@ export default class Clientes extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.string('id', 36).primary()
       table.string('nome', 150).notNullable()
-      table.string('razaoSocial', 150)
+      table.string('razao_social', 150)
       table.string('endereco', 150)
       table.string('bairro', 100)
       table.string('cidade', 50)

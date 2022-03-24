@@ -2,7 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import { rules, schema } from '@ioc:Adonis/Core/Validator'
 
 export default class ClienteValidator {
-  constructor(protected ctx: HttpContextContract) {}
+  constructor(protected ctx: HttpContextContract) { }
 
   public schema = schema.create({
     nome: schema.string({ trim: true }, [rules.maxLength(150)]),
@@ -17,8 +17,8 @@ export default class ClienteValidator {
   })
 
   public messages = {
-    required: 'O campo {{ field }} deve ser informado',
-    minLength: 'O campo {{field}} deve ter no minimo {{options.minLength}}',
-    maxLength: 'O campo {{field}} deve ter no maximo {{options.maxLength}}',
+    'required': 'O campo {{ field }} deve ser informado',
+    'minLength': 'O campo {{field}} deve ter no minimo {{options.minLength}}',
+    'maxLength': 'O campo {{field}} deve ter no maximo {{options.maxLength}}',
   }
 }

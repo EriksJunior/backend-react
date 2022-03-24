@@ -25,6 +25,9 @@ export default class Cliente extends BaseModel {
   public cidade: string
 
   @column()
+  public uf: string
+
+  @column()
   public cep: string
 
   @column()
