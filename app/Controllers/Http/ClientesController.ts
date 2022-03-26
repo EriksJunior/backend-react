@@ -19,7 +19,6 @@ export default class ClientesController {
 
     const data = await Cliente.findOrFail(params.id)
     const cliente = await request.validate(ClienteValidator)
-    console.log(cliente, '0ovoooooooooooooo')
     data.merge(cliente)
     data.save()
 
