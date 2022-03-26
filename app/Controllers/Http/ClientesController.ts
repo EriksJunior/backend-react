@@ -6,17 +6,25 @@ export default class ClientesController {
   public async index({ }: HttpContextContract) { }
 
   public async store({ request }: HttpContextContract) {
-    const data = await request.validate(ClienteValidator)
-    const dataCliente = await Cliente.create(data)
-    console.log(dataCliente, 'quais salva essa merda')
-    return dataCliente
+    const dataCliente = await request.validate(ClienteValidator)
+    const data = await Cliente.create(dataCliente)
+    return data
   }
 
   public async show({ }: HttpContextContract) { }
 
   public async edit({ }: HttpContextContract) { }
 
-  public async update({ }: HttpContextContract) { }
+  public async update({ request, params }: HttpContextContract) {
+    const data = await Cliente.findOrFail(params.id)
+    const idCliente = await request.validate(ClienteValidator)
+
+    data.merge(idCliente)
+    data.save()
+
+    return data
+
+  }
 
   public async destroy({ }: HttpContextContract) { }
 }
