@@ -16,18 +16,19 @@ export default class ClientesController {
   public async edit({ }: HttpContextContract) { }
 
   public async update({ request, params }: HttpContextContract) {
-    const data = await Cliente.findOrFail(params.id)
-    const idCliente = await request.validate(ClienteValidator)
 
-    data.merge(idCliente)
+    const data = await Cliente.findOrFail(params.id)
+    const cliente = await request.validate(ClienteValidator)
+    console.log(cliente, '0ovoooooooooooooo')
+    data.merge(cliente)
     data.save()
 
     return data
 
   }
 
-  public async destroy({params}: HttpContextContract) {
+  public async destroy({ params }: HttpContextContract) {
     const data = await Cliente.findOrFail(params.id)
     data.delete()
-   }
+  }
 }
